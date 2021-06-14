@@ -1,14 +1,19 @@
-# Feature Utils
+# Episode 0
 
-A library to provide Structure, Feature placement as well as their generation and respective loot.
+Hi, In today episode we are looking how to set up our basic workspace and how to start from here, this episode might be a bit cumbersome to advanced people but it's a great start for beginners.
 
-A few utilities are also present such as slime chunk, spawnpoint...
+video: https://youtu.be/-EOpr1pJqQc
 
-Look in the test folder for how to use
+- IDEs :
+Link to Intellij : https://www.jetbrains.com/idea/download
+Link to VS Code: https://code.visualstudio.com/download
+Link to Eclipse : https://www.eclipse.org/downloads/
 
-## Legal mentions
-Licensed under MIT
+- Dependencies:
+Link to SEED github : https://github.com/KaptainWutax/SEED
+Link to docs : https://kaptainwutax.seedfinding.com
 
-Maintained by Neil and KaptainWutax.
-
-NOT OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG.
+- Tools
+Link to gradle download : https://gradle.org/releases/
+Link to chocolatey : https://chocolatey.org/
+Link to Scoop : https://scoop.sh/
