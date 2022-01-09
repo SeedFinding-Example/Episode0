@@ -3,25 +3,67 @@ plugins {
     id 'application'
 }
 
-group 'org.example'
+group 'com.seedfinding'
 version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-    maven {
-        url "https://jitpack.io"
+defaultTasks("clean", "release")
+
+java {
+    // very important ByteBuffer does not have flip in java 1.8
+    // this set the javac --release flag
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
     }
 }
 
-application{
-    mainClass= "Example"
+repositories {
+    mavenCentral()
+    google()
+    maven {
+        url "https://jitpack.io"
+    }
+    maven {
+        url "https://maven.latticg.com/"
+    }
+    maven {
+        url "https://maven.seedfinding.com/"
+    }
+    maven {
+        url "https://maven-snapshots.seedfinding.com/"
+    }
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+}
+
+application {
+    mainClass = "Example"
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-Xlint:deprecation', '-Xlint:unchecked']
+    options.fork = true
 }
 
 dependencies {
-    implementation 'com.github.KaptainWutax:SEED:master-SNAPSHOT'
+    implementation('com.seedfinding:mc_math:LATEST') { transitive = false }
+    implementation('com.seedfinding:mc_seed:LATEST') { transitive = false }
+    implementation('com.seedfinding:mc_core:LATEST') { transitive = false }
+    implementation('com.seedfinding:mc_noise:LATEST') { transitive = false }
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation('com.seedfinding:mc_biome:LATEST') { transitive = false }
+    implementation('com.seedfinding:mc_terrain:LATEST') { transitive = false }
+    implementation('com.seedfinding:mc_feature:LATEST') { transitive = false }
+
+
+    testImplementation('com.seedfinding:mc_reversal:LATEST') { transitive = false }
+
+    implementation('com.seedfinding:latticg:1.06')
+    implementation('one.util:streamex:0.8.1')
+
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${jupiterVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}")
 }
 
 test {
